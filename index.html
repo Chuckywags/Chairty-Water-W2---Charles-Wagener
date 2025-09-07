@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>charity: water — Clean Water for Everyone</title>
+  <meta name="description" content="Join us in bringing safe, clean water to communities in need. Read Amina’s story and see how your donation makes an immediate impact." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
+  <!-- Header / simple nav -->
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="charity: water home">
+      <img src="img/cw_logo.png" alt="charity: water logo" />
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#story">Our Story</a>
+      <a href="#impact">Impact</a>
+      <a class="btn" href="#donate">Donate</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
     <section class="hero">
-        <!-- Main headline -->
+      <div class="hero-inner">
         <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
         <p>Join us in bringing safe, clean water to communities in need.</p>
+        <a class="btn btn-primary" href="#donate">Donate Now</a>
+      </div>
     </section>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
+    <!-- Story -->
+    <section id="story" class="section">
+      <div class="container">
         <h2>Our Story</h2>
-        <p>
-         
+        <p>charity: water funds clean and safe water projects for people around the world. Access to clean water means education, income, and health—especially for women and kids. Your support helps build sustainable wells and local capacity so communities can thrive.</p>
+      </div>
     </section>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+    <!-- Impact -->
+    <section id="impact" class="section section-alt">
+      <div class="container grid">
+        <div class="impact-media">
+          <img
+            src="img/water-can-transparent.png"
+            alt="Illustration of a water can symbolizing clean water access" />
         </div>
+        <div class="impact-copy">
+          <h2>Real Impact: Meet Amina</h2>
+          <p>Amina used to walk miles every day to collect water for her family. Thanks to a new community well, she can attend school and her family is healthier and happier. Clean water changes everything—time, health, and opportunity.</p>
+          <a class="btn" href="#donate">See how you can help</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
+    <!-- Call to action -->
+    <section id="donate" class="section cta">
+      <div class="container">
         <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
+        <p>Your gift today helps bring clean water to more families. Every donation moves us closer to a world where everyone has access to safe water.</p>
+        <!-- Replace the href below with your class’s donation link if required -->
+        <a class="btn btn-primary" href="#" aria-label="Donate to charity: water">Donate Now</a>
+      </div>
     </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <img src="img/cw_logo-2.png" alt="" aria-hidden="true" />
+      <p>&copy; charity: water (student project). This page is for educational purposes.</p>
+    </div>
+  </footer>
 </body>
 </html>
