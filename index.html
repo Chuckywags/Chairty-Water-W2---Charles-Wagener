@@ -10,12 +10,30 @@
 <body>
   <!-- Header (black) -->
   <header class="site-header">
-    <!-- horizontal logo with WHITE text -->
-    <img
-      class="brand brand-horizontal"
-      src="img/charitywater_logo_horizontal_whiteText.png"
-      alt="charity: water"
-    />
+    <div class="header-inner">
+      <!-- horizontal logo with WHITE text -->
+      <a href="#" class="brand-link" aria-label="charity: water home">
+        <img
+          class="brand brand-horizontal"
+          src="img/charitywater_logo_horizontal_whiteText.png"
+          alt="charity: water"
+        />
+      </a>
+
+      <!-- right side: nav + ctas -->
+      <div class="header-right">
+        <nav class="main-nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-ctas">
+          <a class="btn btn-ghost" href="#give-monthly" aria-label="Give Monthly">Give Monthly</a>
+          <a class="btn btn-primary donate-pill" href="#donate" aria-label="Donate">Donate</a>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- Hero: LEFT copy, RIGHT photo | cream background stops just below photo -->
