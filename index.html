@@ -11,7 +11,6 @@
   <!-- Header (black) -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- horizontal logo with WHITE text -->
       <a href="#" class="brand-link" aria-label="charity: water home">
         <img
           class="brand brand-horizontal"
@@ -20,7 +19,6 @@
         />
       </a>
 
-      <!-- right side: nav + ctas -->
       <div class="header-right">
         <nav class="main-nav" aria-label="Primary">
           <a href="#about">About</a>
@@ -36,8 +34,8 @@
     </div>
   </header>
 
-  <!-- Hero: LEFT copy, RIGHT photo | cream background stops just below photo -->
   <main>
+    <!-- Cream hero -->
     <section class="hero-split">
       <!-- LEFT -->
       <div class="hero-left">
@@ -50,13 +48,13 @@
               project updates you can check anytime. <a href="#" class="learn">Learn More</a>
             </p>
 
-            <!-- Donation card -->
+            <!-- DONATION CARD -->
             <div class="donation-card" aria-labelledby="quick-donation-title">
               <div class="card-top">
-                <h3 id="quick-donation-title">Quick Donation</h3>
+                <h3 id="quick-donation-title">Quick donation</h3>
                 <div class="amount-pills" role="group" aria-label="Preset donation amounts">
-                  <button class="pill" data-amount="10">$10</button>
-                  <button class="pill" data-amount="25" aria-pressed="true" autofocus>$25</button>
+                  <button class="pill" data-amount="10" aria-pressed="true" autofocus>$10</button>
+                  <button class="pill" data-amount="25">$25</button>
                   <button class="pill" data-amount="50">$50</button>
                   <button class="pill" data-amount="100">$100</button>
                   <button class="pill">Other</button>
@@ -65,15 +63,21 @@
 
               <div class="amount-row">
                 <label for="amount" class="amount-label">Amount</label>
+
                 <div class="amount-input">
-                  <span class="currency">$</span>
-                  <input id="amount" name="amount" type="number" min="1" step="1" value="25" inputmode="numeric" />
+                  <span class="currency" aria-hidden="true">$</span>
+                  <!-- text input so it always shows 2 decimals -->
+                  <input id="amount" name="amount" type="text" inputmode="decimal"
+                         pattern="^\\d+(\\.\\d{0,2})?$" value="10.00" />
                 </div>
-                <button class="btn btn-primary">Donate now</button>
+
+                <button class="btn btn-primary btn-donate" aria-label="Donate now">Donate now</button>
               </div>
 
               <div class="pay-rows" role="group" aria-label="Payment methods (demo)">
+                <!-- sensible order: Apple Pay • PayPal • Venmo • Card -->
                 <button class="pay">Apple Pay</button>
+                <button class="pay">PayPal</button>
                 <button class="pay">Venmo</button>
                 <button class="pay">Card</button>
               </div>
@@ -84,7 +88,7 @@
         </div>
       </div>
 
-      <!-- RIGHT (photo scaled down) -->
+      <!-- RIGHT (photo) -->
       <div class="hero-right" aria-hidden="true">
         <img src="img/hero.jpg" alt="" />
       </div>
@@ -92,14 +96,38 @@
   </main>
 
   <script>
-    // Fill amount field when a preset pill is clicked
-    document.querySelectorAll(".pill[data-amount]").forEach(btn => {
+    // --- Helpers ---
+    const amountInput = document.getElementById("amount");
+    const pills = document.querySelectorAll(".pill[data-amount]");
+
+    function setAmount(v) {
+      const n = Math.max(1, parseFloat(v) || 0);
+      amountInput.value = n.toFixed(2);
+    }
+
+    // Default amount on load
+    setAmount(10);
+
+    // Click a preset -> set amount, toggle selection
+    pills.forEach(btn => {
       btn.addEventListener("click", () => {
-        document.getElementById("amount").value = btn.dataset.amount;
-        document.querySelectorAll(".pill").forEach(p => p.removeAttribute("aria-pressed"));
+        setAmount(btn.dataset.amount);
+        pills.forEach(p => p.removeAttribute("aria-pressed"));
         btn.setAttribute("aria-pressed", "true");
       });
     });
+
+    // If "Other" is clicked, focus the input
+    const other = Array.from(document.querySelectorAll(".pill")).find(p => p.textContent.trim() === "Other");
+    if (other) {
+      other.addEventListener("click", () => {
+        amountInput.focus();
+        pills.forEach(p => p.removeAttribute("aria-pressed"));
+      });
+    }
+
+    // On blur, normalize to 2 decimals
+    amountInput.addEventListener("blur", () => setAmount(amountInput.value));
   </script>
 </body>
 </html>
