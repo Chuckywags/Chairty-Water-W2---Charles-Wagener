@@ -3,73 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>charity: water — Clean Water for Everyone</title>
-  <meta name="description" content="Join us in bringing safe, clean water to communities in need. Read Amina’s story and see how your donation makes an immediate impact." />
+  <title>charity: water — Turn your spare change into lasting change</title>
+  <meta name="description" content="Give in seconds from your phone to help families access clean and safe water. Choose any amount and get straightforward project updates you can check anytime." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Header / simple nav -->
+  <!-- Header -->
   <header class="site-header">
-    <a class="logo" href="#top" aria-label="charity: water home">
-      <img src="img/cw_logo.png" alt="charity: water logo" />
-    </a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="#story">Our Story</a>
-      <a href="#impact">Impact</a>
-      <a class="btn" href="#donate">Donate</a>
-    </nav>
+    <img class="brand" src="img/cw_logo.png" alt="charity: water" />
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-inner">
-        <h1>Clean Water for Everyone</h1>
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-        <a class="btn btn-primary" href="#donate">Donate Now</a>
-      </div>
-    </section>
+  <!-- Hero: left banner on white page, right photo (small) -->
+  <main>
+    <section class="hero-split">
+      <!-- LEFT (banner wraps the copy) -->
+      <div class="hero-left">
+        <div class="banner">
+          <div class="hero-copy">
+            <h1>Turn your spare change<br>into lasting change.</h1>
+            <p class="subhead">
+              Give in seconds from your phone to help families access clean
+              and safe water. Choose any amount and get straightforward
+              project updates you can check anytime. <a href="#" class="learn">Learn More</a>
+            </p>
 
-    <!-- Story -->
-    <section id="story" class="section">
-      <div class="container">
-        <h2>Our Story</h2>
-        <p>charity: water funds clean and safe water projects for people around the world. Access to clean water means education, income, and health—especially for women and kids. Your support helps build sustainable wells and local capacity so communities can thrive.</p>
-      </div>
-    </section>
+            <!-- Donation card -->
+            <div class="donation-card" aria-labelledby="quick-donation-title">
+              <div class="card-top">
+                <h3 id="quick-donation-title">Quick Donation</h3>
+                <div class="amount-pills" role="group" aria-label="Preset donation amounts">
+                  <button class="pill" data-amount="10">$10</button>
+                  <button class="pill" data-amount="25" aria-pressed="true" autofocus>$25</button>
+                  <button class="pill" data-amount="50">$50</button>
+                  <button class="pill" data-amount="100">$100</button>
+                  <button class="pill">Other</button>
+                </div>
+              </div>
 
-    <!-- Impact -->
-    <section id="impact" class="section section-alt">
-      <div class="container grid">
-        <div class="impact-media">
-          <img
-            src="img/water-can-transparent.png"
-            alt="Illustration of a water can symbolizing clean water access" />
+              <div class="amount-row">
+                <label for="amount" class="amount-label">Amount</label>
+                <div class="amount-input">
+                  <span class="currency">$</span>
+                  <input id="amount" name="amount" type="number" min="1" step="1" value="25" inputmode="numeric" />
+                </div>
+                <button class="btn btn-primary">Donate now</button>
+              </div>
+
+              <div class="pay-rows" role="group" aria-label="Payment methods (demo)">
+                <button class="pay">Apple Pay</button>
+                <button class="pay">Venmo</button>
+                <button class="pay">Card</button>
+              </div>
+
+              <p class="fineprint">Give what feels right—every contribution moves a project forward.</p>
+            </div>
+          </div>
         </div>
-        <div class="impact-copy">
-          <h2>Real Impact: Meet Amina</h2>
-          <p>Amina used to walk miles every day to collect water for her family. Thanks to a new community well, she can attend school and her family is healthier and happier. Clean water changes everything—time, health, and opportunity.</p>
-          <a class="btn" href="#donate">See how you can help</a>
-        </div>
       </div>
-    </section>
 
-    <!-- Call to action -->
-    <section id="donate" class="section cta">
-      <div class="container">
-        <h2>Make a Difference</h2>
-        <p>Your gift today helps bring clean water to more families. Every donation moves us closer to a world where everyone has access to safe water.</p>
-        <!-- Replace the href below with your class’s donation link if required -->
-        <a class="btn btn-primary" href="#" aria-label="Donate to charity: water">Donate Now</a>
+      <!-- RIGHT (photo scaled down) -->
+      <div class="hero-right" aria-hidden="true">
+        <img src="img/hero.jpg" alt="" />
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <img src="img/cw_logo-2.png" alt="" aria-hidden="true" />
-      <p>&copy; charity: water (student project). This page is for educational purposes.</p>
-    </div>
-  </footer>
+  <script>
+    // Fill amount field when a preset pill is clicked
+    document.querySelectorAll(".pill[data-amount]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.getElementById("amount").value = btn.dataset.amount;
+        document.querySelectorAll(".pill").forEach(p => p.removeAttribute("aria-pressed"));
+        btn.setAttribute("aria-pressed", "true");
+      });
+    });
+  </script>
 </body>
 </html>
